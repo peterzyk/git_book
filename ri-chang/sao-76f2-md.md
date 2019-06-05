@@ -63,3 +63,6 @@ https://github.com/nvbn/thefuck
 
 sudo gedit /usr/bin/pip
 from pip import main 改为 from pip._internal import main
+
+###0x9 ubuntu中文乱码
+[](/链接：https://www.centos.bz/2017/12/%E8%A7%A3%E5%86%B3ubuntu%E7%9A%84%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98/)
