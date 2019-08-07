@@ -73,4 +73,4 @@ from pip import main 改为 from pip.\_internal import main
 
 ### 0x10 burp
 
-[](https://www.xcnte.com/archives/426/)
+https://www.xcnte.com/archives/426/
