@@ -78,7 +78,7 @@ AttributeError: /root/miniconda3/lib/python3.7/lib-dynload/../../libcrypto.so.1.
 https://blog.csdn.net/weixin_38950807/article/details/93489381
 ```
 
- 原因就是 在openssl 1.1.0中废弃了`EVP_CIPHER_CTX_cleanup()`函数而引入了`EVE_CIPHER_CTX_reset()`函数所导致的：
+原因就是 在openssl 1.1.0中废弃了`EVP_CIPHER_CTX_cleanup()`函数而引入了`EVE_CIPHER_CTX_reset()`函数所导致的：
 
 ```
 EVP_CIPHER_CTX was made opaque in OpenSSL 1.1.0. As a result, EVP_CIPHER_CTX_reset() appeared and EVP_CIPHER_CTX_cleanup() disappeared. EVP_CIPHER_CTX_init() remains as an alias for EVP_CIPHER_CTX_reset().
@@ -88,33 +88,11 @@ EVP_CIPHER_CTX was made opaque in OpenSSL 1.1.0. As a result, EVP_CIPHER_CTX_res
 
 
 
+#### 0x4 :原理篇
 
+还没来得及看，时间有点紧，先放个链接
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://sq.163yun.com/blog/article/185531711118745600
 
 
 
