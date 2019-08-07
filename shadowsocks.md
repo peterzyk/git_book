@@ -1,8 +1,4 @@
-
-
 ## shadowsocks的使用
-
-
 
 #### 0x1: vps 安装shadowsocks
 
@@ -11,10 +7,9 @@ apt install python-pip
 pip install shadowsocks
 
 #如果电脑上安装了多个python版本以及pip，注意使用的是哪个
-
 ```
 
-  安装之后进行配置，一般使用json文件来存储，例子\(/etc/shadowsocks.josn/  可以自定义这个文件的名字和路径\)
+安装之后进行配置，一般使用json文件来存储，例子\(/etc/shadowsocks.josn/  可以自定义这个文件的名字和路径\)
 
 ```php
 {
@@ -22,38 +17,33 @@ pip install shadowsocks
     "local_address":"127.0.0.1",
     "local_port":1080,#这个端口不变
     "port_password":{
-    	"4567":"passwd_1",
-	"5678":"passwd_2",
-	"6789":"passwd_3",
-	"7891":"passwd_4",
-	"7879":"passwd_5"
+        "4567":"passwd_1",
+    "5678":"passwd_2",
+    "6789":"passwd_3",
+    "7891":"passwd_4",
+    "7879":"passwd_5"
     },
     "timeout":300,
     "method":"camellia-128-cfb",#自己选择
     "fast_open":false
 }
-
 ```
 
- json中的server 是写你自己vps的ip地址，如果进行多个端口配置，port\_password 中 前边是端口，后边是这个端口对应的密码。
+json中的server 是写你自己vps的ip地址，如果进行多个端口配置，port\_password 中 前边是端口，后边是这个端口对应的密码。
 
 methon对应的是加密方式，一般选择 camellia-128-cfb
 
-
-
-####  0x2：启动shadowsocks
+#### 0x2：启动shadowsocks
 
 ```php
 ssserver -c /etc/shadowsocks.json --log-file=/tmp/shadowsocks.log -d start
 ```
 
-   -c 指定了我们配置文件的路径，这个路径上边说了可以自定义的，
+-c 指定了我们配置文件的路径，这个路径上边说了可以自定义的，
 
-   --log-file = /tmp/shadowsocks.log   是我们运行的日志文件存放位置
+--log-file = /tmp/shadowsocks.log   是我们运行的日志文件存放位置
 
-   -d  start后台启动   -d stop/restart
-
-
+-d  start后台启动   -d stop/restart
 
 #### 0x3 : 可能遇到的问题
 
@@ -87,6 +77,44 @@ AttributeError: /root/miniconda3/lib/python3.7/lib-dynload/../../libcrypto.so.1.
 ##这个报错来自来自于网上，自己的当时没复制,链接
 https://blog.csdn.net/weixin_38950807/article/details/93489381
 ```
+
+ 原因就是 在openssl 1.1.0中废弃了`EVP_CIPHER_CTX_cleanup()`函数而引入了`EVE_CIPHER_CTX_reset()`函数所导致的：
+
+```
+EVP_CIPHER_CTX was made opaque in OpenSSL 1.1.0. As a result, EVP_CIPHER_CTX_reset() appeared and EVP_CIPHER_CTX_cleanup() disappeared. EVP_CIPHER_CTX_init() remains as an alias for EVP_CIPHER_CTX_reset().
+```
+
+所以我们的解决办法就是将 cleanup 替换成reset 就好了。学会看报错信息，找到你**openssl.py** 的位置，vim编辑进行替换，就可以正常启动了
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
