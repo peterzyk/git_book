@@ -86,13 +86,11 @@ EVP_CIPHER_CTX was made opaque in OpenSSL 1.1.0. As a result, EVP_CIPHER_CTX_res
 
 所以我们的解决办法就是将 cleanup 替换成reset 就好了。学会看报错信息，找到你**openssl.py** 的位置，vim编辑进行替换，就可以正常启动了
 
-
-
 #### 0x4 :原理篇
 
 还没来得及看，时间有点紧，先放个链接
 
-https://sq.163yun.com/blog/article/185531711118745600
+[https://sq.163yun.com/blog/article/185531711118745600](https://sq.163yun.com/blog/article/185531711118745600)
 
-
+https://www.liuhe36.cn/2018/05/access-internet-by-shadowsocks-ss/
 
